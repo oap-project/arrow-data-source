@@ -47,7 +47,8 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: pr_event
           path: /tmp/
-       - name: Install OAP optimized Arrow
+      - name: Install OAP optimized Arrow
+        run: |
           cd /tmp
           git clone -b oap-master https://github.com/intel-bigdata/arrow.git
           cd arrow/java
