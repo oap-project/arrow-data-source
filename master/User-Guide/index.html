@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>User Guide - Arrow Data Source - master</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "User Guide";
+    var mkdocs_page_input_path = "User-Guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Arrow Data Source - master</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">User Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#note">Note</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#build">Build</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisite">Prerequisite</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-by-conda">Building by Conda</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cmake-installation">cmake installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#maven-installation">maven installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hadoop-native-librarydefault">Hadoop Native Library(Default)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#use-libhdfs3-library-for-better-performanceoptional">Use libhdfs3 library for better performance(Optional)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-and-install-intel-optimized-arrow-with-datasets-java-api">Build and install Intel® Optimized Arrow with Datasets Java API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-arrow-data-source-library">Build Arrow Data Source Library</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#download-spark-300">Download Spark 3.0.0</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get-started">Get started</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#add-extra-class-pathes-to-spark">Add extra class pathes to Spark</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run-a-query-with-arrowdatasource-scala">Run a query with ArrowDataSource (Scala)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#to-validate-if-arrowdatasource-works-properly">To validate if ArrowDataSource works properly</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#work-together-with-parquetdatasource-experimental">Work together with ParquetDataSource (experimental)</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../OAP-Installation-Guide/">OAP Installation Guide</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../OAP-Developer-Guide/">OAP Developer Guide</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="../../">Version Selector</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Arrow Data Source - master</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>User Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="arrow-data-source">Arrow Data Source</h1>
+<p>A Spark DataSource implementation for reading files into Arrow compatible columnar vectors.</p>
+<h2 id="note">Note</h2>
+<p>The development of this library is still in progress. As a result some of the functionality may not be constantly stable for being used in production environments that have not been fully considered due to the limited testing capabilities so far.</p>
+<h2 id="build">Build</h2>
+<h3 id="prerequisite">Prerequisite</h3>
+<p>There are some requirements before you build the project.
+Please make sure you have already installed the software in your system.</p>
+<ol>
+<li>gcc 9.3 or higher version</li>
+<li>java8 OpenJDK -&gt; yum install java-1.8.0-openjdk</li>
+<li>cmake 3.2 or higher version</li>
+<li>maven 3.1.1 or higher version</li>
+<li>Hadoop 2.7.5 or higher version</li>
+<li>Spark 3.0.0 or higher version</li>
+<li>Intel Optimized Arrow 0.17.0</li>
+</ol>
+<h3 id="building-by-conda">Building by Conda</h3>
+<p>If you already have a working Hadoop Spark Cluster, we provide a Conda package which will automatically install dependencies needed by OAP, you can refer to <a href="../OAP-Installation-Guide/">OAP-Installation-Guide</a> for more information. Once finished <a href="../OAP-Installation-Guide/">OAP-Installation-Guide</a>, you can find built <code>spark-arrow-datasource-standard-&lt;version&gt;-jar-with-dependencies.jar</code> under <code>$HOME/miniconda2/envs/oapenv/oap_jars</code>.
+Then you can just skip steps below and jump to <a href="#get-started">Get Started</a>.</p>
+<h3 id="cmake-installation">cmake installation</h3>
+<p>If you are facing some trouble when installing cmake, please follow below steps to install cmake.</p>
+<pre><code>// installing cmake 3.2
+sudo yum install cmake3
+
+// If you have an existing cmake, you can use below command to set it as an option within alternatives command
+sudo alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake 10 --slave /usr/local/bin/ctest ctest /usr/bin/ctest --slave /usr/local/bin/cpack cpack /usr/bin/cpack --slave /usr/local/bin/ccmake ccmake /usr/bin/ccmake --family cmake
+
+// Set cmake3 as an option within alternatives command
+sudo alternatives --install /usr/local/bin/cmake cmake /usr/bin/cmake3 20 --slave /usr/local/bin/ctest ctest /usr/bin/ctest3 --slave /usr/local/bin/cpack cpack /usr/bin/cpack3 --slave /usr/local/bin/ccmake ccmake /usr/bin/ccmake3 --family cmake
+
+// Use alternatives to choose cmake version
+sudo alternatives --config cmake
+</code></pre>
+
+<h3 id="maven-installation">maven installation</h3>
+<p>If you are facing some trouble when installing maven, please follow below steps to install maven</p>
+<pre><code>// installing maven 3.6.3
+Go to https://maven.apache.org/download.cgi and download the specific version of maven
+
+// Below command use maven 3.6.3 as an example
+wget https://ftp.wayne.edu/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+tar xzf apache-maven-3.6.3-bin.tar.gz
+mkdir /usr/local/maven
+mv apache-maven-3.6.3/ /usr/local/maven/
+
+// Set maven 3.6.3 as an option within alternatives command
+sudo alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.6.3/bin/mvn 1
+
+// Use alternatives to choose mvn version
+sudo alternatives --config mvn
+</code></pre>
+
+<h3 id="hadoop-native-librarydefault">Hadoop Native Library(Default)</h3>
+<p>Please make sure you have set up Hadoop directory properly with Hadoop Native Libraries
+By default, Apache Arrow would scan <code>$HADOOP_HOME</code> and find the native Hadoop library <code>libhdfs.so</code>(under <code>$HADOOP_HOME/lib/native</code> directory) to be used for Hadoop client.</p>
+<p>You can also use <code>ARROW_LIBHDFS_DIR</code> to configure the location of <code>libhdfs.so</code> if it is installed in other directory than <code>$HADOOP_HOME/lib/native</code></p>
+<p>If your SPARK and HADOOP are separated in different nodes, please find <code>libhdfs.so</code> in your Hadoop cluster and copy it to SPARK cluster, then use one of the above methods to set it properly.</p>
+<p>For more information, please check
+Arrow HDFS interface <a href="https://github.com/apache/arrow/blob/master/cpp/apidoc/HDFS.md">documentation</a>
+Hadoop Native Library, please read the official Hadoop website <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/NativeLibraries.html">documentation</a></p>
+<h3 id="use-libhdfs3-library-for-better-performanceoptional">Use libhdfs3 library for better performance(Optional)</h3>
+<p>For better performance ArrowDataSource reads HDFS files using the third-party library <code>libhdfs3</code>. The library must be pre-installed on machines Spark Executor nodes are running on.</p>
+<p>To install the library, use of <a href="https://docs.conda.io/en/latest/">Conda</a> is recommended.</p>
+<pre><code>// installing libhdfs3
+conda install -c conda-forge libhdfs3
+
+// check the installed library file
+ll ~/miniconda/envs/$(YOUR_ENV_NAME)/lib/libhdfs3.so
+</code></pre>
+
+<p>To set up libhdfs3, there are two different ways:
+Option1: Overwrite the soft link for libhdfs.so
+To install libhdfs3.so, you have to create a soft link for libhdfs.so in your Hadoop directory(<code>$HADOOP_HOME/lib/native</code> by default).</p>
+<pre><code>ln -f -s libhdfs3.so libhdfs.so
+</code></pre>
+
+<p>Option2:
+Add env variable to the system</p>
+<pre><code>export ARROW_LIBHDFS3_DIR=&quot;PATH_TO_LIBHDFS3_DIR/&quot;
+</code></pre>
+
+<p>Add following Spark configuration options before running the DataSource to make the library to be recognized:
+* <code>spark.executorEnv.ARROW_LIBHDFS3_DIR = "PATH_TO_LIBHDFS3_DIR/"</code>
+* <code>spark.executorEnv.LD_LIBRARY_PATH = "PATH_TO_LIBHDFS3_DEPENDENCIES_DIR/"</code></p>
+<p>Please notes: If you choose to use libhdfs3.so, there are some other dependency libraries you have to installed such as libprotobuf or libcrypto.</p>
+<h3 id="build-and-install-intel-optimized-arrow-with-datasets-java-api">Build and install Intel® Optimized Arrow with Datasets Java API</h3>
+<p>You have to use a customized Arrow to support for our datasets Java API.</p>
+<pre><code>// build arrow-cpp
+git clone -b &lt;version&gt; https://github.com/Intel-bigdata/arrow.git
+cd arrow/cpp
+mkdir build
+cd build
+cmake -DARROW_DEPENDENCY_SOURCE=BUNDLED -DARROW_GANDIVA_JAVA=ON -DARROW_GANDIVA=ON -DARROW_PARQUET=ON -DARROW_HDFS=ON -DARROW_BOOST_USE_SHARED=ON -DARROW_JNI=ON -DARROW_DATASET=ON -DARROW_WITH_PROTOBUF=ON -DARROW_WITH_SNAPPY=ON -DARROW_WITH_LZ4=ON -DARROW_FILESYSTEM=ON -DARROW_JSON=ON ..
+make
+
+// build and install arrow jvm library
+cd ../../java
+mvn clean install -P arrow-jni -am -Darrow.cpp.build.dir=$PATH_TO_ARROW_SOURCE_CODE/arrow/cpp/build/release
+</code></pre>
+
+<h3 id="build-arrow-data-source-library">Build Arrow Data Source Library</h3>
+<pre><code>// Download Arrow Data Source Code
+git clone -b &lt;version&gt; https://github.com/oap-project/arrow-data-source.git
+
+// Go to the directory
+cd arrow-data-source
+
+// build
+mvn clean -DskipTests package
+
+// check built jar library
+readlink -f standard/target/spark-arrow-datasource-standard-&lt;version&gt;-jar-with-dependencies.jar
+</code></pre>
+
+<h3 id="download-spark-300">Download Spark 3.0.0</h3>
+<p>Currently ArrowDataSource works on the Spark 3.0.0 version.</p>
+<pre><code>wget http://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop2.7.tgz
+tar -xf ./spark-3.0.0-bin-hadoop2.7.tgz
+export SPARK_HOME=`pwd`/spark-3.0.0-bin-hadoop2.7
+</code></pre>
+
+<p>If you are new to Apache Spark, please go though <a href="https://spark.apache.org/docs/latest/cluster-overview.html">Spark's official deploying guide</a> before getting started with ArrowDataSource.</p>
+<h2 id="get-started">Get started</h2>
+<h3 id="add-extra-class-pathes-to-spark">Add extra class pathes to Spark</h3>
+<p>To enable ArrowDataSource, the previous built jar <code>spark-arrow-datasource-standard-&lt;version&gt;-jar-with-dependencies.jar</code> should be added to Spark configuration. Typically the options are:</p>
+<ul>
+<li><code>spark.driver.extraClassPath</code> : Set to load jar file to driver. </li>
+<li><code>spark.executor.extraClassPath</code> : Set to load jar file to executor.</li>
+<li><code>jars</code> : Set to copy jar file to the executors when using yarn cluster mode.</li>
+<li><code>spark.executorEnv.ARROW_LIBHDFS3_DIR</code> : Optional if you are using a custom libhdfs3.so.</li>
+<li><code>spark.executorEnv.LD_LIBRARY_PATH</code> : Optional if you are using a custom libhdfs3.so.</li>
+</ul>
+<p>For Spark Standalone Mode, please set the above value as relative path to the jar file.
+For Spark Yarn Cluster Mode, please set the above value as absolute path to the jar file.</p>
+<p>Example to run Spark Shell with ArrowDataSource jar file</p>
+<pre><code>${SPARK_HOME}/bin/spark-shell \
+        --verbose \
+        --master yarn \
+        --driver-memory 10G \
+        --conf spark.driver.extraClassPath=$PATH_TO_DATASOURCE_DIR/spark-arrow-datasource-standard-&lt;version&gt;-jar-with-dependencies.jar \
+        --conf spark.executor.extraClassPath=$PATH_TO_DATASOURCE_DIR/spark-arrow-datasource-standard-&lt;version&gt;-jar-with-dependencies.jar \
+        --conf spark.driver.cores=1 \
+        --conf spark.executor.instances=12 \
+        --conf spark.executor.cores=6 \
+        --conf spark.executor.memory=20G \
+        --conf spark.memory.offHeap.size=80G \
+        --conf spark.task.cpus=1 \
+        --conf spark.locality.wait=0s \
+        --conf spark.sql.shuffle.partitions=72 \
+        --conf spark.executorEnv.ARROW_LIBHDFS3_DIR=&quot;$PATH_TO_LIBHDFS3_DIR/&quot; \
+        --conf spark.executorEnv.LD_LIBRARY_PATH=&quot;$PATH_TO_LIBHDFS3_DEPENDENCIES_DIR&quot;
+</code></pre>
+
+<p>For more information about these options, please read the official Spark <a href="https://spark.apache.org/docs/latest/configuration.html#runtime-environment">documentation</a>.</p>
+<h3 id="run-a-query-with-arrowdatasource-scala">Run a query with ArrowDataSource (Scala)</h3>
+<pre><code class="scala">val path = &quot;${PATH_TO_YOUR_PARQUET_FILE}&quot;
+val df = spark.read
+        .option(ArrowOptions.KEY_ORIGINAL_FORMAT, &quot;parquet&quot;)
+        .option(ArrowOptions.KEY_FILESYSTEM, &quot;hdfs&quot;)
+        .format(&quot;arrow&quot;)
+        .load(path)
+df.createOrReplaceTempView(&quot;my_temp_view&quot;)
+spark.sql(&quot;SELECT * FROM my_temp_view LIMIT 10&quot;).show(10)
+</code></pre>
+
+<h3 id="to-validate-if-arrowdatasource-works-properly">To validate if ArrowDataSource works properly</h3>
+<p>To validate if ArrowDataSource works, you can go to the DAG to check if ArrowScan has been used from the above example query.</p>
+<p><img alt="Image of ArrowDataSource Validation" src="../image/arrowdatasource_validation.png" /></p>
+<h2 id="work-together-with-parquetdatasource-experimental">Work together with ParquetDataSource (experimental)</h2>
+<p>We provide a customized replacement of Spark's built-in ParquetFileFormat. By so users don't have
+to change existing Parquet-based SQL/code and will be able to read Arrow data from Parquet directly.
+More importantly, sometimes the feature could be extremely helpful to make ArrowDataSource work correctly
+with some 3rd-party storage tools (e.g. <a href="https://github.com/delta-io/delta">Delta Lake</a>) that are built on top of ParquetDataSource.</p>
+<p>To replace built-in ParquetDataSource, the only thing has to be done is to place compiled jar <code>spark-arrow-datasource-parquet-&lt;version&gt;.jar</code> into
+Spark's library folder.</p>
+<p>If you'd like to verify that ParquetDataSource is successfully overwritten by the jar, run following code 
+before executing SQL job:</p>
+<pre><code>ServiceLoaderUtil.ensureParquetFileFormatOverwritten();
+</code></pre>
+
+<p>Note the whole feature is currently <strong>experimental</strong> and only DataSource v1 is supported. V2 support is being planned.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../OAP-Installation-Guide/" class="btn btn-neutral float-right" title="OAP Installation Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="../OAP-Installation-Guide/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
