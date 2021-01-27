@@ -20,6 +20,7 @@ package com.intel.oap.spark.sql.execution.datasources.arrow
 import java.net.URLDecoder
 
 import scala.collection.JavaConverters._
+
 import com.intel.oap.spark.sql.execution.datasources.arrow.ArrowFileFormat.UnsafeItr
 import com.intel.oap.spark.sql.execution.datasources.v2.arrow.{ArrowFilters, ArrowOptions, ArrowUtils}
 import com.intel.oap.spark.sql.execution.datasources.v2.arrow.ArrowSQLConf._
@@ -28,6 +29,7 @@ import org.apache.arrow.dataset.scanner.ScanOptions
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileStatus, Path}
 import org.apache.hadoop.mapreduce.Job
+
 import org.apache.spark.TaskContext
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.catalyst.InternalRow

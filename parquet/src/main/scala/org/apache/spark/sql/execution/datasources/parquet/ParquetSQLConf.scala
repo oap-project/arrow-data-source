@@ -23,7 +23,8 @@ object ParquetSQLConf {
   // We default this option value to TRUE. This is because once the code is executed, the compiled
   // arrow-datasource-parquet.jar file is supposed to be placed into Spark's lib folder. Which
   // means it's user's intention to use the replaced ParquetDataSource.
-  val OVERWRITE_PARQUET_DATASOURCE_READ = SQLConf.buildConf("spark.sql.arrow.overwrite.parquet.read")
+  val OVERWRITE_PARQUET_DATASOURCE_READ =
+  SQLConf.buildConf("spark.sql.arrow.overwrite.parquet.read")
     .doc("Overwrite Parquet datasource v1 with reader of Arrow datasource.")
     .booleanConf
     .createWithDefault(true)
