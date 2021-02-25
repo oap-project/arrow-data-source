@@ -27,6 +27,7 @@ class ArrowOptions(@transient private val parameters: CaseInsensitiveMap[String]
   val originalFormat = parameters
     .get(ArrowOptions.KEY_ORIGINAL_FORMAT)
     .getOrElse(ArrowOptions.DEFAULT_ORIGINAL_FORMAT)
+  @deprecated
   val filesystem = parameters
     .get(ArrowOptions.KEY_FILESYSTEM)
     .getOrElse(ArrowOptions.DEFAULT_FILESYSTEM)

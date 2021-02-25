@@ -21,16 +21,14 @@ import java.net.URI
 import java.util.{TimeZone, UUID}
 
 import scala.collection.JavaConverters._
-
 import com.intel.oap.vectorized.ArrowWritableColumnVector
-import org.apache.arrow.dataset.file.{FileSystem, SingleFileDatasetFactory}
+import org.apache.arrow.dataset.file.{FileFormat, FileSystem, SingleFileDatasetFactory}
 import org.apache.arrow.dataset.jni.NativeMemoryPool
 import org.apache.arrow.dataset.scanner.ScanTask
 import org.apache.arrow.vector.FieldVector
 import org.apache.arrow.vector.types.pojo.ArrowType.ArrowTypeID
 import org.apache.arrow.vector.types.pojo.Schema
 import org.apache.hadoop.fs.FileStatus
-
 import org.apache.spark.TaskContext
 import org.apache.spark.sql.catalyst.InternalRow
 import org.apache.spark.sql.execution.datasources.v2.arrow.{SparkMemoryUtils, SparkSchemaUtils}
@@ -70,7 +68,7 @@ object ArrowUtils {
                          options: ArrowOptions): SingleFileDatasetFactory = {
 
     val format = getFormat(options).getOrElse(throw new IllegalStateException)
-    val fs = getFs(options).getOrElse(throw new IllegalStateException)
+    val fs = parseFS(file)
     val allocator = SparkMemoryUtils.contextAllocator()
     val factory = new SingleFileDatasetFactory(allocator,
       SparkMemoryUtils.contextMemoryPool(),
@@ -80,20 +78,6 @@ object ArrowUtils {
       startOffset,
       length)
     factory
-  }
-
-  def rewriteFilePath(file: String): String = {
-    val uri = URI.create(file)
-    if (uri.getScheme == "hdfs") {
-      var query = uri.getQuery
-      if (query == null) {
-        query = "use_hdfs3=1"
-      } else {
-        query += "&use_hdfs3=1"
-      }
-      return new URI(uri.getScheme, uri.getAuthority, uri.getPath, query, uri.getFragment).toString
-    }
-    file
   }
 
   def toArrowSchema(t: StructType): Schema = {
@@ -171,11 +155,26 @@ object ArrowUtils {
     })
   }
 
-  private def getFs(options: ArrowOptions): Option[FileSystem] = {
-    Option(options.filesystem match {
-      case "local" => FileSystem.LOCAL
+  private def parseFS(uriStr: String): FileSystem = {
+    val uri = URI.create(uriStr)
+    uri.getScheme match {
       case "hdfs" => FileSystem.HDFS
-      case _ => throw new IllegalArgumentException("Unrecognizable filesystem")
-    })
+      case "file" => FileSystem.LOCAL
+    }
+  }
+
+  private def rewriteFilePath(uriStr: String): String = {
+    val uri = URI.create(uriStr)
+    val file = uri.getRawPath
+    if (uri.getScheme == "hdfs") {
+      var query = uri.getQuery
+      if (query == null) {
+        query = "use_hdfs3=1"
+      } else {
+        query += "&use_hdfs3=1"
+      }
+      return new URI(uri.getScheme, uri.getAuthority, uri.getPath, query, uri.getFragment).toString
+    }
+    file
   }
 }
