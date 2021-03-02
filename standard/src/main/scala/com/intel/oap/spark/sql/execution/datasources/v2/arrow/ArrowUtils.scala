@@ -161,9 +161,9 @@ object ArrowUtils {
     }
     val ssp = uri.getScheme match {
       case "hdfs" => uri.getRawSchemeSpecificPart
-      case "file" => uri.getRawSchemeSpecificPart
+      case "file" => "//" + uri.getRawSchemeSpecificPart
     }
-    val rewritten = new URI(sch, "//" + ssp, uri.getFragment)
+    val rewritten = new URI(sch, ssp, uri.getFragment)
     rewritten.toString
   }
 }
