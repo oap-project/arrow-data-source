@@ -1,3 +1,6 @@
+# NOTE: THIS REPOSITORY IS DEPRECATED
+Development of Arrow data source has been moved into [OAP native SQL engine](https://github.com/oap-project/native-sql-engine).
+
 # Arrow Data Source 
 
 A Spark DataSource implementation for reading files into Arrow compatible columnar vectors.
