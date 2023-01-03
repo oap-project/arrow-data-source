@@ -1,3 +1,7 @@
+# DISCONTINUATION OF PROJECT #
+This project will no longer be maintained by Intel.
+Intel has ceased development and contributions including, but not limited to, maintenance, bug fixes, new releases, or updates, to this project.
+Intel no longer accepts patches to this project.
 # NOTE: THIS REPOSITORY IS DEPRECATED
 Development of Arrow data source has been moved into [OAP native SQL engine](https://github.com/oap-project/native-sql-engine).
 
